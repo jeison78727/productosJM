@@ -16,12 +16,9 @@ public class SecurityConfig  {
     @Bean
     public SecurityFilterChain springSecurity(HttpSecurity http) throws Exception {
         CsrfTokenRequestAttributeHandler requestHandler = new CsrfTokenRequestAttributeHandler();
-        // set the name of the attribute the CsrfToken will be populated on
         requestHandler.setCsrfRequestAttributeName("_csrf");
         http
-                // ...
                 .csrf(AbstractHttpConfigurer::disable
-                        //.csrfTokenRequestHandler(requestHandler)
                 );
         return http.build();
     }
